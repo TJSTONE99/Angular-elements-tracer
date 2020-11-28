@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { WebsocketService } from '../../services/websocket-service.service'
 
 @Component({
   selector: 'app-details-view',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DetailsViewComponent implements OnInit {
 
-  constructor() { }
+  connectedClientID:string
+
+  constructor(private websocket: WebsocketService) { }
 
   ngOnInit(): void {
+
   }
 
+  submitSelection(value: string) :void{
+    this.websocket.sendMessage('_sendMessageToRecipent', {recipentClientID:this.connectedClientID, value:`Connected User Selected : ${value}`})
+  }
 }

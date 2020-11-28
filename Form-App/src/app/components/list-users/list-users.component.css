@@ -1,0 +1,19 @@
+.vertical-list{
+    width: 100%;
+}
+
+a{
+    background-color: rgb(214, 211, 211);
+    color: black;
+    display: block;
+    padding: 12px;
+    text-decoration: none;
+}
+
+a:hover{
+    background-color: rgb(139, 138, 138);
+}
+
+.alternate {
+    background-color: #f0f0f0; /* Add a green color to the "active/current" link */
+}
