@@ -17,7 +17,7 @@ The serverless web sockets functionality is stored under another repo and will b
 
 I also have created a bassic diagram to illustrate the whole architecture from start to finish. However, I will re-itterate this was mainly thrown together so its far from great but a good reference for future use with angular elements and the notion of micro-front-ending.
 
-![Screenshot](single-spa_serverless-schema.png)
+![Screenshot](angular_elements_serverless-schema.png)
 
 Installation:
 
