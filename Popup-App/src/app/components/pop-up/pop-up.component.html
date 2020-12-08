@@ -1,0 +1,16 @@
+<div *ngIf="visible" class="overlay">
+    <div fxFill fxLayout="row" fxLayoutAlign="center center">
+        <div class="dialog" fxLayout="column" fxLayoutAlign="start center">
+            <div class="header" fxLayout="row" fxLayoutAlign="start center">
+                <h1 style="margin-left: 2%;">Please Enter Your Name</h1>
+            </div>
+            <div class="dialog-body" fxLayout="column" fxLayoutAlign="center center">
+                <h2>Please Enter Your Name:</h2>
+                <form>
+                    <input #input type="text">
+                    <input type="submit" (click)="onSubmit(input.value); $event.preventDefault();" value="Enter">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

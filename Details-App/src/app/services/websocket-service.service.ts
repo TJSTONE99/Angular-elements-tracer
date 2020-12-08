@@ -1,6 +1,11 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 import { WebSocketSubject } from 'rxjs/webSocket'
 import { environment } from '../../environments/environment'
+
+declare global {
+  interface Window { ws: WebSocketSubject<message> }
+}
 
 export interface message{
   action:string,
@@ -17,15 +22,33 @@ export class WebsocketService {
   private socket$: WebSocketSubject<message>
   public isConnected = false
   private timeout
-
+  public displayDetails:BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false)
+  public connectedClientID: BehaviorSubject<string> = new BehaviorSubject<string>('')
 
   public connect(): void {
     clearTimeout(this.timeout)
-    this.socket$ = new WebSocketSubject(environment.websocketConnectionURL)
+    if (window.ws){
+      this.socket$ = window.ws
+    }
+    else
+    {
+      this.socket$ = new WebSocketSubject(environment.websocketConnectionURL)
+      window.ws = this.socket$
+    }
 
     this.socket$
       .subscribe(
         (message:any) => {
+          switch (message.response) {
+            case '_displayDetails':
+              console.log(message)
+              this.connectedClientID.next(message.body.client)
+              this.displayDetails.next(true)
+              break
+            case '_hideDetails':
+              this.displayDetails.next(false)
+              break
+          }
         },
         (err) => {
           this.isConnected = false

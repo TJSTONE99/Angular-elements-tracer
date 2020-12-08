@@ -12,11 +12,14 @@ import { ChatViewComponent } from './components/chat-view/chat-view.component';
 import { ListUsersComponent } from './components/list-users/list-users.component';
 import { MessagesActions } from './store/messages/message-actions';
 import { UserActions } from './store/users/user-actions';
+import { WebsocketService } from './services/websocket.service';
+import { ChatContainerComponent } from './components/chat-container/chat-container.component';
 
 @NgModule({
   declarations: [
     ChatViewComponent,
-    ListUsersComponent
+    ListUsersComponent,
+    ChatContainerComponent
   ],
   imports: [
     BrowserModule,
@@ -28,14 +31,15 @@ import { UserActions } from './store/users/user-actions';
     FlexLayoutModule
   ],
   providers: [MessagesActions, UserActions],
-  entryComponents: [ListUsersComponent],
-  bootstrap: [ListUsersComponent]
+  entryComponents: [ChatContainerComponent],
+  //bootstrap: [ChatContainerComponent]
 })
 export class AppModule implements DoBootstrap{
-  constructor(private inject:Injector) {
+  constructor(private inject:Injector, private websocket: WebsocketService) {
+    this.websocket.connect()
   }
   ngDoBootstrap(){
-    const elem  = createCustomElement(ListUsersComponent, {injector: this.inject})
+    const elem  = createCustomElement(ChatContainerComponent, {injector: this.inject})
     customElements.define('form-app', elem)
   }
  }

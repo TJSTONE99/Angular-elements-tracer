@@ -1,1 +1,18 @@
-<p>chat-view works!</p>
+<div fxLayout="column" class="window" fxLayoutAlign="center center" >
+    <div style="width: 95%;" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="2%">
+        <button (click)="clearDetails()" type="button">Back</button>
+        <h2>You are chatting with {{selectedUser.clientName}}</h2>
+    </div>
+    <div class="message-container">
+        <div *ngIf="messages.length>0">
+            <div [class.alignitem]="selectedUser.clientID == message.sentBy" fxLayout="column" fxLayoutAlign="center start" *ngFor="let message of messages">
+                <p class="item" [class.styledItem]="selectedUser.clientID == message.sentBy" >{{message.value}}</p>
+            </div>
+        </div>
+    </div>
+    <form fxLayoutAlign="center center" [formGroup]="form" (ngSubmit)="onSubmit(); $event.preventDefault();">
+        Message:<input type="text" formControlName="message">
+        <input (click)="onSubmit(); $event.preventDefault();" type="submit" value="Send">
+    </form>
+    <span style="color: red;" *ngIf="form.dirty && form.controls.message.hasError('required')">Please enter a message to send</span>
+</div>

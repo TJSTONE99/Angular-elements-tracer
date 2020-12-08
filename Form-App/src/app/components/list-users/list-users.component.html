@@ -2,7 +2,7 @@
     <h2>Select A User To Chat With </h2>
     <div class="message-container">
         <div class="vertical-list">
-            <a [class.alternate]="($users | async)?.indexOf(user) %2 == 0" *ngFor="let user of $users | async" routerLink="" (click)="gotoChat(user)" >{{user.clientName}}</a>
+            <a [class.alternate]="users?.indexOf(user) %2 == 0" *ngFor="let user of users" routerLink="" (click)="gotoChat(user)" >{{user.clientName}}</a>
         </div>
     </div>
 </div>

@@ -1,0 +1,19 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+  
+html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+form-app{
+    display: inline-block;
+}
+
+details-app{
+    display: inline-block;
+    vertical-align: top;
+}

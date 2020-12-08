@@ -1,0 +1,2 @@
+<app-list-users *ngIf="route == 0" (onUserSelected)="userSelected($event)" (onRouteChange)="routeChange($event)"></app-list-users>
+<app-chat-view *ngIf="route == 1" (onRouteChange)="routeChange($event)" [userID]="connectedUserID"></app-chat-view>

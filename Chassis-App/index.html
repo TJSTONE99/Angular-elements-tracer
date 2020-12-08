@@ -6,15 +6,24 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <script type="module" src="./injector.js"></script>
         <script src="./components/polyfills.js"></script>
+        <script src="./components/dependancies.js"></script>
+        <link rel="stylesheet" type="text/css" href="./style.css">
     </head>
     <body>
         <router>
             <page routerpath="/">
+                <popup-app></popup-app>
+                <navbar-app></navbar-app>
                 <form-app></form-app>
                 <details-app></details-app>
             </page>
-            <page routerpath="/test">
-                <form-app></form-app>
+            <page routerpath="/dummy">
+                <navbar-app></navbar-app>
+                <dummy-app></dummy-app>
+            </page>
+            <page routerpath="/about">
+                <navbar-app></navbar-app>
+                <about-app></about-app>
             </page>
         </router>
     </body>

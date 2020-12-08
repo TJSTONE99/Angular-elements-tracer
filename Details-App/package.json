@@ -9,7 +9,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "build:element": "ng build --prod --output-hashing=none && cat dist/Details-App/runtime.js dist/Details-App/polyfills.js dist/Details-App/main.js > output/Details-App.js",
-    "build:webelem": "ng build --prod --output-hasing none --single-bundle true --keep-polyfills true"
+    "build:webelem": "ng build --extra-webpack-config --prod --output-hashing none --single-bundle true --bundle-styles false --keep-styles true --keep-polyfills true && cat dist/Details-App/main.js dist/Details-App/styles.js > output/Details-App.js && cat dist/Details-App/scripts.js > output/dependancies.js && cat dist/Details-App/polyfills.js > output/polyfills.js"
   },
   "private": true,
   "dependencies": {

@@ -1,5 +1,15 @@
 const injectionItems = [
     {
+        fileName: "Popup-App.js",
+        path: "./components/Popup-App.js",
+        selector: "<popup-app>"
+    },
+    {
+        fileName: "Navbar-App.js",
+        path: "./components/Navbar-App.js",
+        selector: "<navbar-app>"
+    },
+    {
         fileName: "Form-App.js",
         path: "./components/Form-App.js",
         selector: "<form-app>"
@@ -9,16 +19,30 @@ const injectionItems = [
         path: "./components/Details-App.js",
         selector: "<details-app>"
     },
+    {
+        fileName : "Dummy-App.js",
+        path: "./components/Dummy-App.js",
+        selector: "<dummy-app>"
+    },
+    {
+        fileName: "About-App.js",
+        path: "./components/About-App.js",
+        selector: "<about-app>"
+    }
 ]
 
 const router = [
     {
         path: '/',
-        injectionItem: ['Form-App.js', 'Details-App.js']
+        injectionItem: ['Popup-App.js', 'Navbar-App.js', 'Form-App.js', 'Details-App.js', 'About-App.js']
     },
     {
-        path: '/test',
-        injectionItem: ['Form-App.js']
+        path: '/about',
+        injectionItem: ['Navbar-App.js', 'About-App.js']
+    },
+    {
+        path: '/dummy',
+        injectionItem: ['Navbar-App.js', 'Dummy-App.js']
     }
 ]
 
